@@ -34,3 +34,40 @@ const myDog = new Animal (`Шарик`, 8);
 genericAnimal.displayInfo();
 myDog.speak();
 myDog.displayInfo();
+
+
+//2. Инкапсуляция (Encapsulation)
+//инкапсуляцияя - скрытие внутренней реализации от внешнего мира
+//или же - обьединение данных и методов
+//и работы с этими данными в одном классе
+
+console.log('---Инкапсуляция---');
+class BankAccount {
+    #balance =0; //приватное свойство
+    constructor(initialBalance) {
+        if(initialBalance > 0) {
+            this.#balance = initialBalance;
+
+        }
+    }
+    //Публичный метод для внесения денег
+    deposit(amount) {
+        if(amount > 0) {
+            this.#balance += amount;
+            console.log(`Внесено: ${amount}.Новый баланс: ${this.#balance}`);
+        }
+    }
+    //публичный метод для снятия денег
+    withdraw(amount) {
+        if(amount > 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+            console.log(`Снято: ${amount}.Новый баланс: ${this.#balance}`);
+
+        } else {
+            console.log(`Недостаточно средств или неверная сумма.`);
+            
+        }
+    }
+
+
+}
